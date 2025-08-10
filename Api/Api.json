@@ -75,12 +75,12 @@
       },
       "RefProfile": {
         "required": [
-          "name",
+          "id",
           "user"
         ],
         "type": "object",
         "properties": {
-          "name": {
+          "id": {
             "type": "string"
           },
           "user": {
@@ -90,12 +90,12 @@
       },
       "RefProfile2": {
         "required": [
-          "name",
+          "id",
           "user"
         ],
         "type": "object",
         "properties": {
-          "name": {
+          "id": {
             "type": "string"
           },
           "user": { }
