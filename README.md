@@ -5,29 +5,11 @@ This repository demonstrates a bug related to OpenAPI schema generation leading 
 
 ### Details
 
-The file [`Api/Models/Ref.cs`](Api/Models/Ref.cs) contains the following code:
-
-```csharp
-namespace Api.Models;
-
-public record Ref {
-	// BUG: Remove this line and openapi is ok.
-	//      Keep the line and openapi contains any (see Profile and Profile2).
-	public required string Id { get; init; }
-}
-```
-
-- If the property `Id` is **present**, the generated OpenAPI schema contains `any` types for models that reference `Ref` (see `RefProfile` and `RefProfile2`).
-- If you **remove** the property, the OpenAPI schema is generated correctly.
-
-
 ### Steps to Reproduce
-1. Keep the property `Id` in `Ref.cs` and generate the OpenAPI schema using the `Microsoft.Extensions.ApiDescription.Server` package.
+1. Build Api.
 2. The output OpenAPI schema is written to [`Api/Api.json`](Api/Api.json).
 3. Observe in `Api.json` that models referencing `Ref` (such as `RefProfile` and `RefProfile2`) have `any` types in the schema.
 	- In particular, the `user` property of `RefProfile2` is typed as `any` in the OpenAPI output, which is incorrect.
-4. Remove the property `Id` and regenerate the OpenAPI schema.
-5. The schema in `Api.json` is now correct.
 
 
 ### Location
