@@ -5,32 +5,12 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/Subscriptions/{id}": {
+    "/get": {
       "get": {
         "tags": [
-          "Subscriptions"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
+          "Api"
         ],
         "responses": {
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
           "200": {
             "description": "OK",
             "content": {
@@ -47,32 +27,6 @@
   },
   "components": {
     "schemas": {
-      "ProblemDetails": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "nullable": true
-          },
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "detail": {
-            "type": "string",
-            "nullable": true
-          },
-          "instance": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
       "RefProfile": {
         "required": [
           "user"
@@ -83,16 +37,6 @@
             "$ref": "#/components/schemas/RefUser"
           }
         }
-      },
-      "RefProfile2": {
-        "required": [
-          "user"
-        ],
-        "type": "object",
-        "properties": {
-          "user": { }
-        },
-        "nullable": true
       },
       "RefUser": {
         "required": [
@@ -116,7 +60,7 @@
             "$ref": "#/components/schemas/RefProfile"
           },
           "advisor": {
-            "$ref": "#/components/schemas/RefProfile2"
+            "$ref": "#/components/schemas/RefProfile"
           }
         }
       }
@@ -124,7 +68,7 @@
   },
   "tags": [
     {
-      "name": "Subscriptions"
+      "name": "Api"
     }
   ]
 }

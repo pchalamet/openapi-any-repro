@@ -1,17 +1,27 @@
-namespace Api;
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddOpenApi();
+var app = builder.Build();
+
+app.MapGet("/get", () =>
+    new Subscription {
+        Advisor = null,
+        Profile = new RefProfile { User = new RefUser { Name = "Toto " } },
+    });
+
+app.MapOpenApi("/");
+app.Run();
 
 
-public static class Program {
+public record Subscription {
+    public required RefProfile Profile { get; init; }
+    public required RefProfile? Advisor { get; init; }
+}
 
-    public static int Main(string[] args) {
-        var builder = WebApplication.CreateBuilder(args);
-        builder.Services.AddOpenApi().AddControllers();
+public record RefProfile {
+    public required RefUser User { get; init; }
+}
 
-        var app = builder.Build();
-        app.MapControllers();
-        app.Run();
-
-        return 0;
-    }
-
+public record RefUser {
+    public required string Name { get; init; }
 }
