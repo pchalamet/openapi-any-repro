@@ -15,7 +15,7 @@ app.Run();
 
 public record Subscription {
     public required RefProfile Profile { get; init; }
-    public required RefProfile? Advisor { get; init; }
+    public required RefProfile? Advisor { get; init; } // <-- NRT is the problem here
 }
 
 public record RefProfile {
