@@ -75,14 +75,10 @@
       },
       "RefProfile": {
         "required": [
-          "id",
           "user"
         ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string"
-          },
           "user": {
             "$ref": "#/components/schemas/RefUser"
           }
@@ -90,29 +86,21 @@
       },
       "RefProfile2": {
         "required": [
-          "id",
           "user"
         ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string"
-          },
           "user": { }
         },
         "nullable": true
       },
       "RefUser": {
         "required": [
-          "firstName",
-          "lastName"
+          "name"
         ],
         "type": "object",
         "properties": {
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
+          "name": {
             "type": "string"
           }
         }
